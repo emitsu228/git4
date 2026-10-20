@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub — Главная</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        header {
+            padding: 20px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #c9d1d9;
+        }
+
+        nav a:hover {
+            color: #79c0ff;
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .signup {
+            padding: 9px 15px;
+            border: 1px solid #8b949e;
+            border-radius: 7px;
+        }
+
+        .signup:hover {
+            border-color: #ffffff;
+            background: #21262d;
+        }
+
+        .hero {
+            padding: 90px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            background: radial-gradient(
+                ellipse at top right,
+                #26234f,
+                #0d1117 65%
+            );
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .label {
+            color: #a5a0ff;
+            font-size: 15px;
+        }
+
+        h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin: 22px 0;
+            letter-spacing: -2px;
+        }
+
+        .description {
+            color: #8b949e;
+            font-size: 21px;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 22px;
+            border-radius: 7px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .green {
+            background: #238636;
+            color: white;
+        }
+
+        .green:hover {
+            background: #2ea043;
+        }
+
+        .outline {
+            border: 1px solid #8b949e;
+        }
+
+        .outline:hover {
+            background: #21262d;
+        }
+
+        .code-window {
+            width: 420px;
+            max-width: 100%;
+            min-width: 0;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            background: #161b22;
+            box-shadow: 0 20px 65px #00000055;
+        }
+
+        .window-top {
+            padding: 15px 20px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ff5f57;
+        }
+
+        .yellow {
+            background: #febc2e;
+        }
+
+        .green-dot {
+            background: #28c840;
+        }
+
+        .filename {
+            margin-left: 15px;
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        pre {
+            margin: 0;
+            padding: 25px;
+            overflow-x: auto;
+            font-size: 15px;
+            line-height: 1.9;
+            color: #c9d1d9;
+        }
+
+        .purple {
+            color: #d2a8ff;
+        }
+
+        .blue {
+            color: #79c0ff;
+        }
+
+        .orange {
+            color: #ffa657;
+        }
+
+        .comment {
+            color: #8b949e;
+        }
+
+        .features {
+            padding: 35px 6% 80px;
+        }
+
+        h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #8b949e;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1;
+            padding: 28px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #8957e5;
+        }
+
+        .card-icon {
+            color: #a5a0ff;
+            font-family: monospace;
+            font-size: 28px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #8b949e;
+            line-height: 1.7;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #79c0ff;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 25px 6%;
+            border-top: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: #79c0ff;
+        }
+
+        a:focus-visible {
+            outline: 2px solid #79c0ff;
+            outline-offset: 5px;
+        }
+
+        @media (max-width: 1000px) {
+            header {
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 60px;
+            }
+
+            .code-window {
+                width: 100%;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                gap: 20px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 18px;
+                font-size: 14px;
+            }
+
+            .account {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .description {
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a class="logo" href="index.html" aria-label="Главная страница">
+            GitHub
+        </a>
+
+        <nav aria-label="Главное меню">
+            <a href="#features">Возможности</a>
+            <a href="https://github.com/explore">Проекты</a>
+            <a href="https://github.com/pricing">Тарифы</a>
+        </nav>
+
+        <div class="account">
+            <a href="https://github.com/login">Войти</a>
+            <a class="signup" href="https://github.com/signup">
+                Регистрация
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <p class="label">ПЛАТФОРМА ДЛЯ РАЗРАБОТЧИКОВ</p>
+
+                <h1>Создавай код.<br>Меняй будущее.</h1>
+
+                <p class="description">
+                    Храни свои проекты, работай вместе с командой
+                    и воплощай идеи в жизнь. Всё необходимое
+                    для разработки — в одном месте.
+                </p>
+
+                <div class="actions">
+                    <a class="button green"
+                       href="https://github.com/signup">
+                        Начать бесплатно
+                    </a>
+
+                    <a class="button outline"
+                       href="https://github.com/explore">
+                        Смотреть проекты →
+                    </a>
+                </div>
+            </div>
+
+            <div class="code-window">
+                <div class="window-top">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green-dot"></span>
+                    <span class="filename">hello.js</span>
+                </div>
+
+                <pre><code><span class="comment">// Всё начинается с идеи</span>
+
+<span class="purple">function</span> <span class="blue">hello</span>() {
+    <span class="purple">const</span> message = <span class="orange">"Привет, мир!"</span>;
+    console.<span class="blue">log</span>(message);
+}
+
+<span class="blue">hello</span>();
+
+<span class="comment">// Твой следующий проект — здесь</span></code></pre>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2>Всё для твоего следующего проекта</h2>
+
+            <p class="section-description">
+                От первой строки кода до совместной работы над большим приложением.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <span class="card-icon" aria-hidden="true">&lt;/&gt;</span>
+                    <h3>Храни код</h3>
+                    <p>
+                        Создавай репозитории, загружай файлы
+                        и сохраняй историю изменений своего проекта.
+                    </p>
+                    <a href="https://github.com/new">
+                        Создать репозиторий →
+                    </a>
+                </article>
+
+                <article class="card">
+                    <span class="card-icon" aria-hidden="true">[+]</span>
+                    <h3>Работай в команде</h3>
+                    <p>
+                        Обсуждай изменения, проверяй код
+                        и решай задачи вместе с другими разработчиками.
+                    </p>
+                    <a href="https://github.com/features">
+                        Изучить возможности →
+                    </a>
+                </article>
+
+                <article class="card">
+                    <span class="card-icon" aria-hidden="true">{…}</span>
+                    <h3>Находи идеи</h3>
+                    <p>
+                        Изучай открытые проекты, учись на примерах
+                        и участвуй в разработке интересных приложений.
+                    </p>
+                    <a href="https://github.com/trending">
+                        Популярные проекты →
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Учебный макет в стиле GitHub</span>
+
+        <div class="footer-links">
+            <a href="https://docs.github.com">Документация</a>
+            <a href="https://support.github.com">Поддержка</a>
+            <a href="https://github.com">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
